@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
         slider.maxValue = health;
         slider.value = health;
     }
+    //gets health
    public void setHealth(int health)
     {
         slider.value = health;
