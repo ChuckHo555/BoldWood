@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private bool isGrounded;
     private bool isRunning;
+    private bool isAttack = false;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask isItGround;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isItGround);
         Jump();
         Run();
+        Attack();
 
      }
 
@@ -96,6 +98,40 @@ public class PlayerController : MonoBehaviour
         {
             isRunning = false;
             animator.SetBool("isRunning", false);
+        }
+    }
+    public void Attack()
+    {
+        if (Input.GetKey(KeyCode.J) && !isAttack)
+        {
+            isAttack = true;
+            animator.SetBool("isAttack_1", true);
+        }
+        else
+        {
+            isAttack = false;
+            animator.SetBool("isAttack_1", false);
+        }
+
+        if(Input.GetKey(KeyCode.K) && !isAttack)
+        {
+            isAttack = true;
+            animator.SetBool("isAttack_2", true);
+        }
+        else
+        {
+            isAttack = false;
+            animator.SetBool("isAttack_2", false);
+        }
+        if (Input.GetKey(KeyCode.L) && !isAttack)
+        {
+            isAttack = true;
+            animator.SetBool("isAttack_3", true);
+        }
+        else
+        {
+            isAttack = false;
+            animator.SetBool("isAttack_3", false);
         }
     }
 }
