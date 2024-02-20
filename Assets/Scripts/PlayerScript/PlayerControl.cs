@@ -8,7 +8,7 @@ using UnityEngine.U2D;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
+    [SerializeField]public float moveSpeed = 2.0f;
     public Rigidbody2D rigidBody;
     public Animator animator;
     public Vector2 walking_Velocity;
@@ -18,9 +18,10 @@ public class PlayerController : MonoBehaviour
     public Transform feetPos;
     public float checkRadius;
     public LayerMask isItGround;
-    public float runspeed = 8.0f;
+    [SerializeField]public float runspeed = 8.0f;
     public float directionX;
     public SpriteRenderer spriteRenderer;
+    [SerializeField]public float jumpForce = 7f;
 
 
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -50,7 +52,13 @@ public class PlayerController : MonoBehaviour
         directionX = Input.GetAxisRaw("Horizontal");
         rigidBody.velocity = new Vector2(directionX * moveSpeed, rigidBody.velocity.y);
         animator.SetFloat("walk_speed", Mathf.Abs(rigidBody.velocity.x));
-        spriteRenderer.flipX = rigidBody.velocity.x < 0f;
+        if(rigidBody.velocity.x < 0f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (rigidBody.velocity.x > 0f){
+            spriteRenderer.flipX = false;
+        }
     }
 
     //Jump
@@ -60,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", true);
             isJumping = true;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 7f);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
             isGrounded = false;
         }
         if (isGrounded)
