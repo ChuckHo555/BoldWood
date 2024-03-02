@@ -2,35 +2,30 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.U2D;
 
-
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]public float moveSpeed = 5.0f;
+
+    public SpriteRenderer spriteRenderer;
     public Rigidbody2D rigidBody;
     public Animator animator;
     public Vector2 walking_Velocity;
     private bool isMoving = false;
-    public bool IsMoving {  get { return isMoving; } set { isMoving = value;
-            animator.SetBool("isMoving", value);
-        } }
     private bool isRunning = false;
-    public bool IsRunning { get { return isRunning; } set { isRunning = value;
-            animator.SetBool("isRunning", value);
-        } }
-    private bool isJumping;
-    private bool isGrounded;
-  
+    private bool facingRight = true;
     private bool isAttack = false;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask isItGround;
-    [SerializeField]public float runspeed = 9.0f;
-    public SpriteRenderer spriteRenderer;
+    [SerializeField]public float runSpeed = 9.0f;
+    [SerializeField]public float moveSpeed = 5.0f;
     [SerializeField]public float jumpForce = 7f;
+ 
+
 
     private void Awake()
     {
@@ -43,112 +38,102 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-
     private void FixedUpdate()
     {
-        Walk();
-
+        Move();
+        animator.SetFloat(Animations.yDirection, rigidBody.velocity.y);
     }
     void Update()
     {   
         //checks if character is on ground
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isItGround);
+        //isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isItGround);
         //Jump();
         //Run();
         //Attack();
 
      }
 
+    //Sets walking animation if walking
+    public bool IsMoving {  get { return isMoving; } set { isMoving = value;
+                animator.SetBool(Animations.isMoving, value);
+            } }
+    //Sets running animation if running
+    public bool IsRunning { get { return isRunning; } set { isRunning = value;
+                animator.SetBool(Animations.isRunning, value);
+            } }
+
     //Walking
-    public void Walk()
+    public void Move()
     {
-        rigidBody.velocity = new Vector2(walking_Velocity.x * moveSpeed, rigidBody.velocity.y);
-        animator.SetFloat("walk_speed", Mathf.Abs(rigidBody.velocity.x));
-        if(rigidBody.velocity.x < 0f)
+        rigidBody.velocity = new Vector2(walking_Velocity.x * WalkOrRun, rigidBody.velocity.y);
+        //animator.SetFloat("walk_speed", Mathf.Abs(rigidBody.velocity.x));
+        //if(rigidBody.velocity.x < 0f)
+       // {
+            //spriteRenderer.flipX = true;
+       // }
+        //else if (rigidBody.velocity.x > 0f){
+          //  spriteRenderer.flipX = false;
+        //}
+    }
+
+    public float WalkOrRun
+    {
+        get
         {
-            spriteRenderer.flipX = true;
+            if (IsMoving)
+            {
+                if (IsRunning)
+                {
+                    return runSpeed;
+                }
+                else
+                {
+                    return moveSpeed;
+                }
+            }
+            else
+            {
+                return 0;
+            }
         }
-        else if (rigidBody.velocity.x > 0f){
-            spriteRenderer.flipX = false;
+    }
+    //Sets which direction the character is facing
+    public void setDirection(Vector2 moveInput)
+    {
+        if (moveInput.x > 0f && !FacingRight)
+        {
+            FacingRight = true;
+        }else if (moveInput.x < 0f && FacingRight)
+        {
+            FacingRight = false;
+        }
+        
+    }
+    public bool FacingRight
+    {
+        get
+        {
+            return facingRight;
+        }
+        set
+        {
+            if(facingRight != value)
+            {
+                //Reverses the local scale of the object to the right
+                transform.localScale *= new Vector2(-1, 1);
+            }
+            facingRight = value;
         }
     }
 
-    //Jump
-    //public void Jump()
-    //{
-      //  if (Input.GetButtonDown("Jump") && isGrounded)
-        //{
-          //  animator.SetBool("isJumping", true);
-            //isJumping = true;
-            //rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-            //isGrounded = false;
-        //}
-        //if (isGrounded)
-        //{
-          //  isJumping = false;
-            //animator.SetBool("isJumping", false);
-        //}
-        //else
-        //{
-          //  animator.SetBool("isJumping", true);
-        //}
-    //}
-
-    //Run
-   // public void Run()
-    //{
-        //Run
-     //   if (Input.GetKey(KeyCode.LeftShift))
-       // {
-         //   rigidBody.velocity = new Vector2(moveSpeed * runspeed, rigidBody.velocity.y);
-           // isRunning = true;
-            //animator.SetBool("isRunning", true);
-        //}
-        //else
-        //{
-          //  isRunning = false;
-            //animator.SetBool("isRunning", false);
-        //}
-    //}
-    //public void Attack()
-    //{
-        //if (Input.GetKey(KeyCode.J) && !isAttack)
-        //{
-            //isAttack = true;
-          //  animator.SetBool("isAttack_1", true);
-        //}
-        //else
-        //{
-            //isAttack = false;
-          //  animator.SetBool("isAttack_1", false);
-        //}
-
-        //if(Input.GetKey(KeyCode.K) && !isAttack)
-        //{
-            //isAttack = true;
-          //  animator.SetBool("isAttack_2", true);
-        //}
-        //else
-        //{
-            //isAttack = false;
-          //  animator.SetBool("isAttack_2", false);
-        //}
-        //if (Input.GetKey(KeyCode.L) && !isAttack)
-        //{
-            //isAttack = true;
-          //  animator.SetBool("isAttack_3", true);
-        //}
-        //else
-        //{
-            //isAttack = false;
-          //  animator.SetBool("isAttack_3", false);
-        //}
-    //}
+    //Obtains information on user input, then sets the value of IsMoving
     public void OnMove(InputAction.CallbackContext context)
     {
         walking_Velocity = context.ReadValue<Vector2>();
         IsMoving = walking_Velocity != Vector2.zero;
+        setDirection(walking_Velocity);
     }
+    //Checks if the button is pressed (L Shift), then sets then value of IsRunning
     public void OnRun(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -158,6 +143,13 @@ public class PlayerController : MonoBehaviour
         else if (context.canceled)
         {
             IsRunning = false;
+        }
+    }
+    public void onJump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+
         }
     }
 }
