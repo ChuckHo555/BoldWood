@@ -18,13 +18,15 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
     private bool facingRight = true;
     private bool isAttack = false;
+    [SerializeField]private bool onGround = true;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask isItGround;
     [SerializeField]public float runSpeed = 9.0f;
     [SerializeField]public float moveSpeed = 5.0f;
-    [SerializeField]public float jumpForce = 7f;
- 
+    [SerializeField]public float jumpForce = 7.0f;
+    [SerializeField] public float airSpeed = 3.0f;
+
 
 
     private void Awake()
@@ -42,14 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         animator.SetFloat(Animations.yDirection, rigidBody.velocity.y);
+
+        //checks if character is on ground
+        onGround = Physics2D.OverlapCircle(feetPos.position, checkRadius, isItGround);
+
+         
     }
     void Update()
     {   
-        //checks if character is on ground
-        //isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, isItGround);
-        //Jump();
-        //Run();
-        //Attack();
 
      }
 
@@ -66,14 +68,6 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         rigidBody.velocity = new Vector2(walking_Velocity.x * WalkOrRun, rigidBody.velocity.y);
-        //animator.SetFloat("walk_speed", Mathf.Abs(rigidBody.velocity.x));
-        //if(rigidBody.velocity.x < 0f)
-       // {
-            //spriteRenderer.flipX = true;
-       // }
-        //else if (rigidBody.velocity.x > 0f){
-          //  spriteRenderer.flipX = false;
-        //}
     }
 
     public float WalkOrRun
@@ -82,13 +76,19 @@ public class PlayerController : MonoBehaviour
         {
             if (IsMoving)
             {
-                if (IsRunning)
-                {
-                    return runSpeed;
+                if (onGround) { 
+                    if (IsRunning)
+                    {
+                         return runSpeed;
+                    }
+                    else
+                    {
+                        return moveSpeed;
+                    }
                 }
                 else
                 {
-                    return moveSpeed;
+                    return airSpeed;
                 }
             }
             else
@@ -147,9 +147,10 @@ public class PlayerController : MonoBehaviour
     }
     public void onJump(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && onGround)
         {
-
+            animator.SetTrigger(Animations.Jump);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         }
     }
 }

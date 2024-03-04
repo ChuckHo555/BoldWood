@@ -8,4 +8,5 @@ internal class Animations
     internal static string isRunning = "isRunning";
     internal static string isGrounded = "isGrounded";
     internal static string yDirection = "yDirection";
+    internal static string Jump = "Jump";
 }
