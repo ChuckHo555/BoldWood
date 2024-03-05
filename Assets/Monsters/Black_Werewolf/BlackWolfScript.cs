@@ -6,9 +6,10 @@ public class BlackWolfScript : MonoBehaviour
 {
     public float walkSpeed = 3f;
     Rigidbody2D rigibody;
-    public enum WalkDirection { Left, Right };
+    public enum WalkDirection {  Right, Left };
     private WalkDirection walkdirection;
-    private Vector2 walkVector;
+    private Vector2 walkVector = Vector2.right;
+    DirectionCheck directionCheck;
     
 
     public WalkDirection _WalkDirection
@@ -20,13 +21,13 @@ public class BlackWolfScript : MonoBehaviour
             {
                 gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, gameObject.transform.localScale.y);
 
-                if(value == WalkDirection.Left)
-                {
-                    walkVector = Vector2.left; 
-                }
-                else if(value == WalkDirection.Right)
+                if(value == WalkDirection.Right)
                 {
                     walkVector = Vector2.right; 
+                }
+                else if(value == WalkDirection.Left)
+                {
+                    walkVector = Vector2.left; 
                 }
             }
             walkdirection = value;
@@ -35,6 +36,7 @@ public class BlackWolfScript : MonoBehaviour
     private void Awake()
     {
         rigibody = GetComponent<Rigidbody2D>();
+        directionCheck = GetComponent<DirectionCheck>();
     }
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,23 @@ public class BlackWolfScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigibody.velocity = new Vector2(walkSpeed * Vector2.right.x, rigibody.velocity.y);
+        if (directionCheck.OnWall && directionCheck.IsGrounded)
+        {
+            FlipCharacter();
+        }
+        rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
+    }
+
+    void FlipCharacter()
+    {
+        if(_WalkDirection == WalkDirection.Right)
+        {
+            _WalkDirection = WalkDirection.Left;
+        }
+        else if(_WalkDirection == WalkDirection.Left) 
+        {
+            _WalkDirection = WalkDirection.Right;
+        }
     }
 
     // Update is called once per frame

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]public float moveSpeed = 5.0f;
     [SerializeField]public float jumpForce = 8.0f;
     [SerializeField] public float airSpeed = 3.0f;
+    DirectionCheck directionCheck;
 
 
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        directionCheck = GetComponent<DirectionCheck>();
     }
 
     void Start()
