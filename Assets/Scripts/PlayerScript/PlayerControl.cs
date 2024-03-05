@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask isItGround;
     [SerializeField]public float runSpeed = 9.0f;
     [SerializeField]public float moveSpeed = 5.0f;
-    [SerializeField]public float jumpForce = 7.0f;
+    [SerializeField]public float jumpForce = 8.0f;
     [SerializeField] public float airSpeed = 3.0f;
 
 
@@ -74,27 +74,36 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if (IsMoving)
-            {
-                if (onGround) { 
-                    if (IsRunning)
-                    {
-                         return runSpeed;
-                    }
-                    else
-                    {
-                        return moveSpeed;
-                    }
-                }
-                else
+            if (YesMove)
+            {  if (IsMoving)
                 {
-                    return airSpeed;
+                    if (onGround) { 
+                         if (IsRunning)
+                         {
+                             return runSpeed;
+                         }
+                        else
+                        {
+                            return moveSpeed;
+                        }
+                    }
+                     else
+                    {
+                         return airSpeed;
+                      }
+                    }
+               else
+                {
+                    return 0;
                 }
+
             }
             else
             {
+                //cannot move if moving is locked
                 return 0;
             }
+          
         }
     }
     //Sets which direction the character is facing
@@ -126,6 +135,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool YesMove
+    {
+        get
+        {
+            return animator.GetBool(Animations.yesMove);
+        }
+    }
+
     //Obtains information on user input, then sets the value of IsMoving
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -147,10 +164,17 @@ public class PlayerController : MonoBehaviour
     }
     public void onJump(InputAction.CallbackContext context)
     {
-        if (context.started && onGround)
+        if (context.started && onGround && YesMove)
         {
             animator.SetTrigger(Animations.Jump);
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+        }
+    }
+    public void onAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(Animations.Attack);
         }
     }
 }

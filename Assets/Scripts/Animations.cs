@@ -9,4 +9,6 @@ internal class Animations
     internal static string isGrounded = "isGrounded";
     internal static string yDirection = "yDirection";
     internal static string Jump = "Jump";
+    internal static string Attack = "Attack";
+    internal static string yesMove = "yesMove";
 }
