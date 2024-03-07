@@ -14,6 +14,9 @@ public class BlackWolfScript : MonoBehaviour
     public bool targetDetected = false;
     Animator animator;
     private float delaySpeed = 0.1f;
+    Health damageable;
+    private float cooldownTimer;
+    public DetectionRange cliffDetection;
 
     public WalkDirection _WalkDirection
     {
@@ -41,6 +44,7 @@ public class BlackWolfScript : MonoBehaviour
         rigibody = GetComponent<Rigidbody2D>();
         directionCheck = GetComponent<DirectionCheck>();
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Health>();
     }
     // Start is called before the first frame update
     void Start()
@@ -53,13 +57,16 @@ public class BlackWolfScript : MonoBehaviour
         {
             FlipCharacter();
         }
-        if (YesMove)
+        if (!damageable.WasHit)
         {
-            rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
-        }
-        else
-        {
-            rigibody.velocity = new Vector2(Mathf.Lerp(rigibody.velocity.x, 0, delaySpeed), rigibody.velocity.y);
+            if (YesMove)
+            {
+                rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
+            }
+            else
+            {
+                rigibody.velocity = new Vector2(Mathf.Lerp(rigibody.velocity.x, 0, delaySpeed), rigibody.velocity.y);
+            }
         }
     }
 
@@ -79,6 +86,11 @@ public class BlackWolfScript : MonoBehaviour
     void Update()
     {
         TargetDetected = attackRange.detectedColliders.Count > 0;
+        if(cooldownTimer > 0)
+        {
+            CooldownTimer -= Time.deltaTime;
+        }
+        
     }
     public bool TargetDetected
     {
@@ -97,6 +109,29 @@ public class BlackWolfScript : MonoBehaviour
         get
         {
             return animator.GetBool("yesMove");
+        }
+    }
+    public void onHit(int damage, Vector2 knockback)
+    {
+        rigibody.velocity = new Vector2(knockback.x, rigibody.velocity.y - knockback.y);
+    }
+
+    public float CooldownTimer
+    {
+        get
+        {
+            return animator.GetFloat("cooldownTimer");
+        }
+        set
+        {
+            animator.SetFloat("cooldownTimer", Mathf.Max(value, 0));
+        }
+    }
+    public void NoGroundDetected()
+    {
+        if (directionCheck.IsGrounded)
+        {
+            FlipCharacter();
         }
     }
 }

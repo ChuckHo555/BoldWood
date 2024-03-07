@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlackWolf_Hit
+  m_Name: Player_Hurt
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1968533649, guid: 1b83e0c41cc013d47add7a4540cabafa, type: 3}
+      value: {fileID: -1170200164, guid: 42ab3cbc72a70fc4199b9c95f546fe77, type: 3}
     - time: 0.31666666
-      value: {fileID: -31884189, guid: 1b83e0c41cc013d47add7a4540cabafa, type: 3}
+      value: {fileID: 1548823378, guid: 42ab3cbc72a70fc4199b9c95f546fe77, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1968533649, guid: 1b83e0c41cc013d47add7a4540cabafa, type: 3}
-    - {fileID: -31884189, guid: 1b83e0c41cc013d47add7a4540cabafa, type: 3}
+    - {fileID: -1170200164, guid: 42ab3cbc72a70fc4199b9c95f546fe77, type: 3}
+    - {fileID: 1548823378, guid: 42ab3cbc72a70fc4199b9c95f546fe77, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private bool isMoving = false;
     private bool isRunning = false;
     private bool facingRight = true;
-    private bool isAttack = false;
     [SerializeField]private bool onGround = true;
     public Transform feetPos;
     public float checkRadius;
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]public float jumpForce = 8.0f;
     [SerializeField] public float airSpeed = 3.0f;
     DirectionCheck directionCheck;
-
+    Health damageable;
 
 
     private void Awake()
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         directionCheck = GetComponent<DirectionCheck>();
+        damageable = GetComponent<Health>();
     }
 
     void Start()
@@ -44,7 +44,11 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
+        if (!damageable.WasHit)
+        {
+             Move();
+        }
+       
         animator.SetFloat(Animations.yDirection, rigidBody.velocity.y);
 
         //checks if character is on ground
@@ -193,4 +197,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(Animations.Attack);
         }
     }
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rigidBody.velocity = new Vector2(knockback.x, rigidBody.velocity.y+knockback.y);
+    }
+    
+        
+    
 }
