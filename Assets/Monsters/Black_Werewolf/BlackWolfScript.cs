@@ -10,7 +10,10 @@ public class BlackWolfScript : MonoBehaviour
     private WalkDirection walkdirection;
     private Vector2 walkVector = Vector2.right;
     DirectionCheck directionCheck;
-    
+    public DetectionRange attackRange;
+    public bool targetDetected = false;
+    Animator animator;
+    private float delaySpeed = 0.1f;
 
     public WalkDirection _WalkDirection
     {
@@ -37,6 +40,7 @@ public class BlackWolfScript : MonoBehaviour
     {
         rigibody = GetComponent<Rigidbody2D>();
         directionCheck = GetComponent<DirectionCheck>();
+        animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -49,7 +53,14 @@ public class BlackWolfScript : MonoBehaviour
         {
             FlipCharacter();
         }
-        rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
+        if (YesMove)
+        {
+            rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
+        }
+        else
+        {
+            rigibody.velocity = new Vector2(Mathf.Lerp(rigibody.velocity.x, 0, delaySpeed), rigibody.velocity.y);
+        }
     }
 
     void FlipCharacter()
@@ -67,6 +78,25 @@ public class BlackWolfScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        TargetDetected = attackRange.detectedColliders.Count > 0;
+    }
+    public bool TargetDetected
+    {
+        get
+        {
+            return targetDetected;
+        }
+        set
+        {
+            targetDetected= value;
+            animator.SetBool("targetDetected", value);
+        }
+    }
+    public bool YesMove
+    {
+        get
+        {
+            return animator.GetBool("yesMove");
+        }
     }
 }

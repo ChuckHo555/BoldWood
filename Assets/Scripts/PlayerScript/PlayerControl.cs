@@ -144,13 +144,27 @@ public class PlayerController : MonoBehaviour
             return animator.GetBool(Animations.yesMove);
         }
     }
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool("isAlive");
+        }
+    }
 
     //Obtains information on user input, then sets the value of IsMoving
     public void OnMove(InputAction.CallbackContext context)
     {
         walking_Velocity = context.ReadValue<Vector2>();
-        IsMoving = walking_Velocity != Vector2.zero;
-        setDirection(walking_Velocity);
+        if (IsAlive)
+        {
+            IsMoving = walking_Velocity != Vector2.zero;
+            setDirection(walking_Velocity);
+        }
+        else
+        {
+            IsMoving = false;
+        }
     }
     //Checks if the button is pressed (L Shift), then sets then value of IsRunning
     public void OnRun(InputAction.CallbackContext context)
