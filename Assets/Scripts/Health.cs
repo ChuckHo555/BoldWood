@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     [SerializeField] private int currentHealth = 100;
     private bool isAlive = true;
     private bool invincible = false;
-    private bool wasHit = false;
     Animator animator;
     private float timeFromHit = 0;
     public float invincibleDuration = 0.8f;
@@ -65,21 +64,35 @@ public class Health : MonoBehaviour
     }
     public void Hit(int damage, Vector2 knockback)
     {
-        if (IsAlive)
+        if (IsAlive && !invincible)
         {
             CurrentHealth -= damage;
             invincible = true;
             WasHit = true;
             successHit?.Invoke(damage, knockback);
+            CharacterEvents.characterDamaged(gameObject, damage);
         }
     }
     public bool WasHit
     {
-        get { return animator.GetBool("wasHit"); }
+        get => animator.GetBool("wasHit"); 
         set
         {
             animator.SetBool("wasHit", value);
         }
 
+    }
+    public bool Heal(int healAmount)
+    {
+            if(IsAlive && CurrentHealth < maxHealth)
+            {
+            int maxHeal = Mathf.Max(maxHealth - CurrentHealth, 0);
+            int cappedHeal = Mathf.Min(maxHeal, healAmount);
+            CurrentHealth += cappedHeal;
+            CharacterEvents.characterHealed(gameObject, cappedHeal);
+            return true;
+            }
+
+            return false;        
     }
 }
