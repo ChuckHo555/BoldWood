@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlackWolfScript : MonoBehaviour
 {
     public float walkSpeed = 3f;
+    public float maxSpeed = 3f;
     Rigidbody2D rigibody;
     public enum WalkDirection {  Right, Left };
     private WalkDirection walkdirection;
@@ -46,11 +47,7 @@ public class BlackWolfScript : MonoBehaviour
         animator = GetComponent<Animator>();
         damageable = GetComponent<Health>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
     private void FixedUpdate()
     {
         if (directionCheck.OnWall && directionCheck.IsGrounded)
@@ -59,9 +56,10 @@ public class BlackWolfScript : MonoBehaviour
         }
         if (!damageable.WasHit)
         {
-            if (YesMove)
+            if (YesMove && directionCheck.IsGrounded)
             {
-                rigibody.velocity = new Vector2(walkSpeed * walkVector.x, rigibody.velocity.y);
+                float xVelocity = Mathf.Clamp(rigibody.velocity.x + (walkSpeed * walkVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed);
+                rigibody.velocity = new Vector2(xVelocity, rigibody.velocity.y);
             }
             else
             {

@@ -197,6 +197,13 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(Animations.Attack);
         }
     }
+    public void onRangedAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger("rangeAttack");
+        }
+    }
     public void OnHit(int damage, Vector2 knockback)
     {
         rigidBody.velocity = new Vector2(knockback.x, rigidBody.velocity.y+knockback.y);

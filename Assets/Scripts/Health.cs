@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     private bool invincible = false;
     Animator animator;
     private float timeFromHit = 0;
-    public float invincibleDuration = 0.8f;
+    public float invincibleDuration = 0.5f;
     public UnityEvent<int, Vector2> successHit;
 
     private void FixedUpdate()
@@ -62,7 +62,7 @@ public class Health : MonoBehaviour
           
         }
     }
-    public void Hit(int damage, Vector2 knockback)
+    public bool Hit(int damage, Vector2 knockback)
     {
         if (IsAlive && !invincible)
         {
@@ -71,7 +71,9 @@ public class Health : MonoBehaviour
             WasHit = true;
             successHit?.Invoke(damage, knockback);
             CharacterEvents.characterDamaged(gameObject, damage);
+            return true;
         }
+        return false;
     }
     public bool WasHit
     {

@@ -12,17 +12,6 @@ public class Attack : MonoBehaviour
     {
         attackCollider = GetComponent<Collider2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
        Health damageable = other.GetComponent<Health>();
@@ -31,7 +20,7 @@ public class Attack : MonoBehaviour
         {
             Vector2 flipKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
             damageable.Hit(hitDamage, flipKnockback);
-            Debug.Log(other.name + "hot for " + hitDamage + " damage");
+            Debug.Log(other.name + " hit for " + hitDamage + " damage");
         }
     }
 }
