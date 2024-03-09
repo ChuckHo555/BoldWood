@@ -102,6 +102,8 @@ MonoBehaviour:
   travelSpeed: {x: 8, y: 0}
   knockback: {x: 4, y: 0}
   damage: 8
+  despawnTimeElapsed: 0
+  despawnTime: 2
 --- !u!50 &7289350767542989863
 Rigidbody2D:
   serializedVersion: 4

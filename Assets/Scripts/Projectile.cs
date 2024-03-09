@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     public Vector2 travelSpeed = new Vector2(3f, 0);
     public Vector2 knockback = new Vector2(0,0);
     public int damage = 10;
+    public float despawnTimeElapsed = 0f;
+    public float despawnTime = 5f;
     Rigidbody2D Rigidbody;
     // Start is called before the first frame update
     void Awake()
@@ -18,6 +20,11 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         Rigidbody.velocity = new Vector2(travelSpeed.x * transform.localScale.x, travelSpeed.y);
+        despawnTimeElapsed += Time.deltaTime;  
+        if(despawnTimeElapsed > despawnTime)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,7 +38,8 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
                  Debug.Log(collision.name + " hit for " + damage + " damage");
             }
-           
+       
         }
+        
     }
 }
