@@ -412,7 +412,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BlackWolf_Attack1
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3773959745257958233}
@@ -523,7 +523,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BlackWolf_Attack2
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2891328946030795309}
@@ -606,7 +606,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BlackWolf_Attack3
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6771804884507070415}
@@ -637,4 +637,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7f4129f5e18f14d88b9304d6a602d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.5
+  fadeTime: 0.8

@@ -66,6 +66,10 @@ public class BlackWolfScript : MonoBehaviour
                 rigibody.velocity = new Vector2(Mathf.Lerp(rigibody.velocity.x, 0, delaySpeed), rigibody.velocity.y);
             }
         }
+        if (!damageable.IsAlive)
+        {
+            rigibody.velocity = new Vector2(0, rigibody.velocity.y);
+        }
     }
 
     void FlipCharacter()

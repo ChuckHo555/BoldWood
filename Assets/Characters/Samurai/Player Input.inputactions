@@ -1,5 +1,5 @@
 {
-    "name": "My project",
+    "name": "Player Input",
     "maps": [
         {
             "name": "Player",
@@ -406,6 +406,15 @@
                     "type": "PassThrough",
                     "id": "b2d6cd2e-38e4-4e0c-aa06-011eb4eef56d",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "ee03bd6a-2f6d-4014-a7d6-72007bee2f28",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -827,6 +836,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d6fe229-c499-4341-88c3-8d00ae837a38",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
