@@ -14,16 +14,6 @@ public class DetectionRange : MonoBehaviour
     {
         collider2D = GetComponent<Collider2D>();  
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         detectedColliders.Add(collision);
