@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     private float timeFromHit = 0;
     public float invincibleDuration = 0.5f;
     public UnityEvent<int, Vector2> successHit;
+    public UnityEvent<int, int> heatlhChanged;
 
     private void FixedUpdate()
     {
@@ -45,6 +46,7 @@ public class Health : MonoBehaviour
         set
         {
             currentHealth = value;
+            heatlhChanged?.Invoke(CurrentHealth, MaxHealth);
 
             if (currentHealth <= 0)
             {

@@ -6,11 +6,12 @@ public class HealItem : MonoBehaviour
 {
     public int healAmount = 15;
     public Vector3 spinSpeed = new Vector3 (0, 180, 0);
+    public AudioSource healSound;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        healSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,7 +27,12 @@ public class HealItem : MonoBehaviour
             bool wasHealed = hasHealth.Heal(healAmount);
             if (wasHealed)
             {
-                Destroy(gameObject);
+                if (healSound)
+                {
+                    AudioSource.PlayClipAtPoint(healSound.clip, gameObject.transform.position, healSound.volume);
+                     Destroy(gameObject);
+                }
+               
             }
             
         }

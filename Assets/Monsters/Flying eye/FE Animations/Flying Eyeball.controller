@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8619423804535086420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e1c45f866e40548b6a70cd43957675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFile: {fileID: 8300000, guid: 37d6678c3685f72489b07835e0f320da, type: 3}
+  volume: 1
+  playOnEnter: 1
+  playOnExit: 0
+  playerAfterDelay: 0
+  playDelay: 0.25
 --- !u!1102 &-8048489610003414747
 AnimatorState:
   serializedVersion: 6
@@ -13,6 +31,7 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: -7059866609979605121}
+  - {fileID: -8619423804535086420}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -54,6 +73,24 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-7237238242366989587
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e1c45f866e40548b6a70cd43957675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFile: {fileID: 8300000, guid: 840ca0a4917d7934d9e8b6a01eef913b, type: 3}
+  volume: 1
+  playOnEnter: 1
+  playOnExit: 0
+  playerAfterDelay: 0
+  playDelay: 0.25
 --- !u!114 &-7059866609979605121
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +178,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Eye_Attack_1
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5982917541807255892}
@@ -236,6 +273,7 @@ AnimatorState:
   - {fileID: -4529976671984785550}
   m_StateMachineBehaviours:
   - {fileID: 2180810142315982833}
+  - {fileID: -7237238242366989587}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

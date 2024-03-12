@@ -46,19 +46,4 @@ public class UIManager : MonoBehaviour
 
         tMP_Text.text = healingAmount.ToString();
     }
-   // public void onGameExit(InputAction.CallbackContext context)
-   // {
-       // if (context.started)
-      //  {
-               // #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
-                      //  Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-              //  #endif
-
-              //  #if (UNITY_EDITOR)
-                    //    UnityEditor.EditorApplication.isPlaying = false;
-              //  #elif (UNITY_STANDALONE)
-                      //  Applcation.Quit();
-             //   #endif
-       // }
-   // }
 }
