@@ -30,7 +30,7 @@ Game Over Screen
 Victory Screen
 ![BoldWoodVictory](https://github.com/ChuckHo555/BoldWood/assets/149022625/4570bf03-f3e0-40b8-9696-dc22e7a8eaae)
 
-[Music Pack #2]([https://media1.tenor.com/m/quNHRVDoTVgAAAAC/excited-cute.gif](https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1)https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1)
+https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1
 
 
 
