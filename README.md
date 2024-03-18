@@ -14,6 +14,9 @@ SPACE - Jump
 J - Normal Attack
 K - Ranged Attack
 
+# How To Win
+Defeat the two giant bosses at both the left and right side corner!
+
 # Pictures 
 Starting Menu
 ![BoldWoodStartingScreen](https://github.com/ChuckHo555/BoldWood/assets/149022625/e8601dcf-e1af-4d8e-aaad-75705826365d)
