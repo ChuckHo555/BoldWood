@@ -30,6 +30,9 @@ Game Over Screen
 Victory Screen
 ![BoldWoodVictory](https://github.com/ChuckHo555/BoldWood/assets/149022625/4570bf03-f3e0-40b8-9696-dc22e7a8eaae)
 
+# Gameplay Video
+https://github.com/ChuckHo555/BoldWood/assets/149022625/873cf4cb-9b7e-4d2c-99ce-839166089f3b
+
 # Assets Used
 [Player Model](https://craftpix.net/freebies/free-shinobi-sprites-pixel-art/?num=1&count=1&sq=shinobi&pos=0)
 
@@ -52,7 +55,3 @@ Victory Screen
 [Music Pack#2](https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1)
 
 [Text Font](https://managore.itch.io/m5x7)
-
-# Gameplay Video
-https://github.com/ChuckHo555/BoldWood/assets/149022625/873cf4cb-9b7e-4d2c-99ce-839166089f3b
-
