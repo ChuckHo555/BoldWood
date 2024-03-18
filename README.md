@@ -53,4 +53,6 @@ Victory Screen
 
 [Text Font](https://managore.itch.io/m5x7)
 
+# Gameplay Video
+https://github.com/ChuckHo555/BoldWood/assets/149022625/873cf4cb-9b7e-4d2c-99ce-839166089f3b
 
