@@ -39,15 +39,18 @@ Victory Screen
 
 [Werewolf Enemy](https://free-game-assets.itch.io/free-werewolf-sprite-sheets-pixel-art)
 
+[Eyeball Enemy](https://luizmelo.itch.io/monsters-creatures-fantasy)
+
 [Food Pack](https://rcpstd.itch.io/pixel-fruits-vegetables-pack)
 
-[SFX](https://leohpaz.itch.io/rpg-essentials-sfx-free)
-
 [Ranged Slash Attack](https://sangoro.itch.io/attack-vfx)
+
+[SFX](https://leohpaz.itch.io/rpg-essentials-sfx-free)
 
 [Music Pack#1](https://kiddolink.itch.io/vgm-calm-1-royalty-free-music)
 
 [Music Pack#2](https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1)
 
+[Text Font](https://managore.itch.io/m5x7)
 
 
