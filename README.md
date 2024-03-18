@@ -30,7 +30,16 @@ Game Over Screen
 Victory Screen
 ![BoldWoodVictory](https://github.com/ChuckHo555/BoldWood/assets/149022625/4570bf03-f3e0-40b8-9696-dc22e7a8eaae)
 
-[Music Pack#2](https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1).
+# Assets Used
+[Player Model](https://craftpix.net/freebies/free-shinobi-sprites-pixel-art/?num=1&count=1&sq=shinobi&pos=0)
+[Tile Map](https://cainos.itch.io/pixel-art-platformer-village-props)
+[Background](https://lazyteastudios.itch.io/pine-forest-parallax-background)
+[Werewolf Enemy](https://free-game-assets.itch.io/free-werewolf-sprite-sheets-pixel-art)
+[Food Pack](https://rcpstd.itch.io/pixel-fruits-vegetables-pack)
+[SFX](https://leohpaz.itch.io/rpg-essentials-sfx-free)
+[Ranged Slash Attack](https://sangoro.itch.io/attack-vfx)
+[Music Pack#1](https://kiddolink.itch.io/vgm-calm-1-royalty-free-music)
+[Music Pack#2](https://sirion-lumenaire.itch.io/sirions-free-rpg-music-pack-1)
 
 
 
