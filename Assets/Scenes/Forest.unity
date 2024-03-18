@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Wolf Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1604513454293619045, guid: 88ab79fd0b93bf5488844900f2ff8bcb, type: 3}
+      propertyPath: m_TagString
+      value: Boss Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -753,8 +757,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 1298364317
-  m_SortingOrder: 1
+  m_SortingLayerID: -1246584869
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &547185064
 RectTransform:
@@ -1179,17 +1183,6 @@ Transform:
   - {fileID: 1668305572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &759702727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 126385146367031638, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-  m_PrefabInstance: {fileID: 8971069268818651532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e5ce020c227ad4b996e727fe73748a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &793707066
 GameObject:
   m_ObjectHideFlags: 0
@@ -16393,11 +16386,11 @@ PrefabInstance:
       objectReference: {fileID: 2010488740}
     - target: {fileID: 708749588332678923, guid: 5aaa64613ecec614782434cee9e002d3, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 708749588332678923, guid: 5aaa64613ecec614782434cee9e002d3, type: 3}
       propertyPath: currentHealth
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3857795604326516205, guid: 5aaa64613ecec614782434cee9e002d3, type: 3}
       propertyPath: m_LocalScale.x
@@ -16454,6 +16447,10 @@ PrefabInstance:
     - target: {fileID: 6624294854905552425, guid: 5aaa64613ecec614782434cee9e002d3, type: 3}
       propertyPath: m_Name
       value: Flying Eyeball Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624294854905552425, guid: 5aaa64613ecec614782434cee9e002d3, type: 3}
+      propertyPath: m_TagString
+      value: Boss Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16761,6 +16758,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3831627871740247907, guid: 2f1cffa4a2c07494cbf9f8983df75ab2, type: 3}
   m_PrefabInstance: {fileID: 8709454827719508970}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728076151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728076145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33364ef90d935b41b5d22a566eb512e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1843756406
 GameObject:
   m_ObjectHideFlags: 0
@@ -17490,6 +17499,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3504182392318189286, guid: 2f1cffa4a2c07494cbf9f8983df75ab2, type: 3}
+      propertyPath: UIScene
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3831627871740247907, guid: 2f1cffa4a2c07494cbf9f8983df75ab2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.21
@@ -17545,7 +17558,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7392516086905956269, guid: 2f1cffa4a2c07494cbf9f8983df75ab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728076151}
   m_SourcePrefab: {fileID: 100100000, guid: 2f1cffa4a2c07494cbf9f8983df75ab2, type: 3}
 --- !u!1001 &8971069268818651532
 PrefabInstance:
@@ -17559,30 +17575,6 @@ PrefabInstance:
       propertyPath: gameCanvas
       value: 
       objectReference: {fileID: 547185063}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 759702727}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onGameExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 629286232366727206, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -17593,7 +17585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17601,15 +17593,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1116791822290009044, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17623,13 +17615,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2692850214543838014, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4368006994676590182, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
       propertyPath: m_Name
       value: UI Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368006994676590182, guid: 3423b77de75370946ae227443e2ffc2f, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17649,8 +17641,8 @@ SceneRoots:
   - {fileID: 116903655}
   - {fileID: 721924703}
   - {fileID: 547185064}
-  - {fileID: 1122969651}
   - {fileID: 8971069268818651532}
+  - {fileID: 1122969651}
   - {fileID: 3220179187237967372}
   - {fileID: 322307631}
   - {fileID: 1884838300}

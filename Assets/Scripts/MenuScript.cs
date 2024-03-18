@@ -13,4 +13,15 @@ public class MenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OnRestart(int layerIndex)
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void onMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

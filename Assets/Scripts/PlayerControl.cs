@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float airSpeed = 3.0f;
     DirectionCheck directionCheck;
     Health damageable;
+    public float timer = 0f;
 
 
     private void Awake()
@@ -32,11 +34,6 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         directionCheck = GetComponent<DirectionCheck>();
         damageable = GetComponent<Health>();
-    }
-
-    void Start()
-    {
-        
     }
     private void FixedUpdate()
     {
@@ -53,9 +50,18 @@ public class PlayerController : MonoBehaviour
          
     }
     void Update()
-    {   
+    {
+        if (!damageable.IsAlive)
+        {
+            timer += Time.deltaTime;
+            if (timer > 2f) 
+            {
+                SceneManager.LoadScene(2);
+            }
+           
+        }
 
-     }
+    }
 
     //Sets walking animation if walking
     public bool IsMoving {  get { return isMoving; } set { isMoving = value;
@@ -204,6 +210,8 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(knockback.x, rigidBody.velocity.y+knockback.y);
     }
+
+    
     
         
     
